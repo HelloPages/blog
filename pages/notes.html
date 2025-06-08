@@ -1,0 +1,47 @@
+---
+layout: default
+title: All Notes
+permalink: /notes/
+pagination:
+  enabled: true
+  collection: posts
+  category: notes
+  per_page: 6
+---
+
+<h1 class="page-title">{{ page.title }}</h1>
+
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search notes.." aria-label="Search notes">
+</div>
+
+  <div class="content-sections">
+    <section class="recent-posts">
+      <h2>Recent Posts</h2>
+      {% assign recent_posts = site.posts | where_exp: "post", "post.categories contains 'posts'" | limit: 5 %}
+      {% include post-list-title-only.html posts=recent_posts %}
+      <a href="{{ '/posts' | relative_url }}" class="view-all">View all posts →</a>
+    </section>
+  </div>
+
+{% assign notes = site.posts | where_exp: "post", "post.categories contains 'notes'" %}
+{% include note-list.html notes=paginator.posts %}
+{% include pagination.html %}
+
+<script>
+  document.getElementById('search-input').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const noteItems = document.querySelectorAll('.note-item');
+    
+    noteItems.forEach(item => {
+      const title = item.querySelector('.note-title').textContent.toLowerCase();
+      const excerpt = item.querySelector('.note-excerpt').textContent.toLowerCase();
+      
+      if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
