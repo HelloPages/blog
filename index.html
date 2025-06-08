@@ -14,8 +14,9 @@ layout: default
     {% for category in categories %}
       <div class="collection-item">
         <h2 class="collection-title">{{ category[0] | capitalize }}</h2>
-        <p class="collection-count">{{ category[1].size }} items</p>
-        <a href="{{ '/' | append: category[0] | slugify | relative_url }}" class="collection-link">View collection →</a>
+        <!--  items   -->
+     <!--     <p class="collection-count">{{ category[1].size }} items</p>  -->
+        <a href="{{ '/' | append: category[0] | slugify | relative_url }}" class="collection-link"> Read more! →</a>   <!--   View collection -->
       </div>
     {% endfor %}
   </div> 
