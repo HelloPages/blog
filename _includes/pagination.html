@@ -1,0 +1,108 @@
+{% comment %}
+Custom pagination include that works with different content types
+Usage: {% include pagination.html content_type="posts" per_page=8 %}
+{% endcomment %}
+
+{% assign content_type = include.content_type | default: "posts" %}
+{% assign per_page = include.per_page | default: 10 %}
+{% assign current_page_url = page.url %}
+
+{% comment %} Get all posts for the specific content type {% endcomment %}
+{% if content_type == "posts" %}
+  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'posts'" %}
+  {% assign base_url = "/posts/" %}
+{% elsif content_type == "notes" %}
+  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'notes'" %}
+  {% assign base_url = "/notes/" %}
+{% elsif content_type == "microblog" %}
+  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'microblog'" %}
+  {% assign base_url = "/microblog/" %}
+{% else %}
+  {% assign all_content = site.posts %}
+  {% assign base_url = "/" %}
+{% endif %}
+
+{% comment %} Calculate pagination {% endcomment %}
+{% assign total_posts = all_content.size %}
+{% assign total_pages = total_posts | divided_by: per_page %}
+{% if total_posts modulo per_page > 0 %}
+  {% assign total_pages = total_pages | plus: 1 %}
+{% endif %}
+
+{% comment %} Determine current page {% endcomment %}
+{% assign current_page = 1 %}
+{% if current_page_url contains '/page' %}
+  {% assign page_parts = current_page_url | split: '/page' %}
+  {% assign page_number = page_parts[1] | split: '/' | first | plus: 0 %}
+  {% if page_number > 0 %}
+    {% assign current_page = page_number %}
+  {% endif %}
+{% endif %}
+
+{% if total_pages > 1 %}
+<div class="pagination">
+  {% comment %} Previous page link {% endcomment %}
+  {% if current_page > 1 %}
+    {% if current_page == 2 %}
+      <a href="{{ base_url | relative_url }}" class="pagination-item">&laquo; Prev</a>
+    {% else %}
+      {% assign prev_page = current_page | minus: 1 %}
+      <a href="{{ base_url | append: 'page' | append: prev_page | append: '/' | relative_url }}" class="pagination-item">&laquo; Prev</a>
+    {% endif %}
+  {% else %}
+    <span class="pagination-item pagination-disabled">&laquo; Prev</span>
+  {% endif %}
+
+  {% comment %} Page numbers {% endcomment %}
+  {% assign start_page = current_page | minus: 2 %}
+  {% assign end_page = current_page | plus: 2 %}
+  
+  {% if start_page < 1 %}
+    {% assign start_page = 1 %}
+    {% assign end_page = 5 %}
+  {% endif %}
+  
+  {% if end_page > total_pages %}
+    {% assign end_page = total_pages %}
+    {% assign start_page = total_pages | minus: 4 %}
+    {% if start_page < 1 %}
+      {% assign start_page = 1 %}
+    {% endif %}
+  {% endif %}
+
+  {% comment %} Show first page if not in range {% endcomment %}
+  {% if start_page > 1 %}
+    <a href="{{ base_url | relative_url }}" class="pagination-item">1</a>
+    {% if start_page > 2 %}
+      <span class="pagination-item pagination-ellipsis">...</span>
+    {% endif %}
+  {% endif %}
+
+  {% comment %} Show page numbers in range {% endcomment %}
+  {% for page_num in (start_page..end_page) %}
+    {% if page_num == current_page %}
+      <span class="pagination-item pagination-current">{{ page_num }}</span>
+    {% elsif page_num == 1 %}
+      <a href="{{ base_url | relative_url }}" class="pagination-item">{{ page_num }}</a>
+    {% else %}
+      <a href="{{ base_url | append: 'page' | append: page_num | append: '/' | relative_url }}" class="pagination-item">{{ page_num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% comment %} Show last page if not in range {% endcomment %}
+  {% if end_page < total_pages %}
+    {% if end_page < total_pages | minus: 1 %}
+      <span class="pagination-item pagination-ellipsis">...</span>
+    {% endif %}
+    <a href="{{ base_url | append: 'page' | append: total_pages | append: '/' | relative_url }}" class="pagination-item">{{ total_pages }}</a>
+  {% endif %}
+
+  {% comment %} Next page link {% endcomment %}
+  {% if current_page < total_pages %}
+    {% assign next_page = current_page | plus: 1 %}
+    <a href="{{ base_url | append: 'page' | append: next_page | append: '/' | relative_url }}" class="pagination-item">Next &raquo;</a>
+  {% else %}
+    <span class="pagination-item pagination-disabled">Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
