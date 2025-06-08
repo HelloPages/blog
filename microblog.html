@@ -14,3 +14,12 @@ pagination:
 {% assign microblogs = site.posts | where_exp: "post", "post.categories contains 'microblog'" %}
 {% include post-list-title-only.html posts=paginator.posts %}
 {% include pagination.html %}
+
+<!-- Microblog 页面 -->
+<div class="microblog">
+  <div class="microblog-year">
+    <h2>2024 (12 posts)</h2>
+    <ul class="post-list">
+      <li>...</li>
+    </ul>
+  </div>
