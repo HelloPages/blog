@@ -1,108 +1,214 @@
 {% comment %}
-Custom pagination include that works with different content types
-Usage: {% include pagination.html content_type="posts" per_page=8 %}
+  Pagination component for Posts, Notes, and Microblog
+  Handles different content types with proper path generation
 {% endcomment %}
 
-{% assign content_type = include.content_type | default: "posts" %}
-{% assign per_page = include.per_page | default: 10 %}
-{% assign current_page_url = page.url %}
-
-{% comment %} Get all posts for the specific content type {% endcomment %}
-{% if content_type == "posts" %}
-  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'posts'" %}
-  {% assign base_url = "/posts/" %}
-{% elsif content_type == "notes" %}
-  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'notes'" %}
-  {% assign base_url = "/notes/" %}
-{% elsif content_type == "microblog" %}
-  {% assign all_content = site.posts | where_exp: "post", "post.categories contains 'microblog'" %}
-  {% assign base_url = "/microblog/" %}
-{% else %}
-  {% assign all_content = site.posts %}
-  {% assign base_url = "/" %}
-{% endif %}
-
-{% comment %} Calculate pagination {% endcomment %}
-{% assign total_posts = all_content.size %}
-{% assign total_pages = total_posts | divided_by: per_page %}
-{% if total_posts modulo per_page > 0 %}
-  {% assign total_pages = total_pages | plus: 1 %}
-{% endif %}
-
-{% comment %} Determine current page {% endcomment %}
-{% assign current_page = 1 %}
-{% if current_page_url contains '/page' %}
-  {% assign page_parts = current_page_url | split: '/page' %}
-  {% assign page_number = page_parts[1] | split: '/' | first | plus: 0 %}
-  {% if page_number > 0 %}
-    {% assign current_page = page_number %}
-  {% endif %}
-{% endif %}
-
-{% if total_pages > 1 %}
-<div class="pagination">
-  {% comment %} Previous page link {% endcomment %}
-  {% if current_page > 1 %}
-    {% if current_page == 2 %}
-      <a href="{{ base_url | relative_url }}" class="pagination-item">&laquo; Prev</a>
+{% if paginator.total_pages > 1 %}
+<nav class="pagination" role="navigation" aria-label="Pagination Navigation">
+  <div class="pagination-wrapper">
+    
+    {% comment %} Determine the base path based on current page {% endcomment %}
+    {% assign base_path = '' %}
+    {% if page.url contains '/posts/' or page.url == '/posts.html' or page.url == '/posts/' %}
+      {% assign base_path = '/posts' %}
+    {% elsif page.url contains '/notes/' or page.url == '/notes.html' or page.url == '/notes/' %}
+      {% assign base_path = '/notes' %}
+    {% elsif page.url contains '/microblog/' or page.url == '/microblog.html' or page.url == '/microblog/' %}
+      {% assign base_path = '/microblog' %}
     {% else %}
-      {% assign prev_page = current_page | minus: 1 %}
-      <a href="{{ base_url | append: 'page' | append: prev_page | append: '/' | relative_url }}" class="pagination-item">&laquo; Prev</a>
+      {% assign base_path = '' %}
     {% endif %}
-  {% else %}
-    <span class="pagination-item pagination-disabled">&laquo; Prev</span>
-  {% endif %}
 
-  {% comment %} Page numbers {% endcomment %}
-  {% assign start_page = current_page | minus: 2 %}
-  {% assign end_page = current_page | plus: 2 %}
-  
-  {% if start_page < 1 %}
-    {% assign start_page = 1 %}
-    {% assign end_page = 5 %}
-  {% endif %}
-  
-  {% if end_page > total_pages %}
-    {% assign end_page = total_pages %}
-    {% assign start_page = total_pages | minus: 4 %}
-    {% if start_page < 1 %}
-      {% assign start_page = 1 %}
-    {% endif %}
-  {% endif %}
-
-  {% comment %} Show first page if not in range {% endcomment %}
-  {% if start_page > 1 %}
-    <a href="{{ base_url | relative_url }}" class="pagination-item">1</a>
-    {% if start_page > 2 %}
-      <span class="pagination-item pagination-ellipsis">...</span>
-    {% endif %}
-  {% endif %}
-
-  {% comment %} Show page numbers in range {% endcomment %}
-  {% for page_num in (start_page..end_page) %}
-    {% if page_num == current_page %}
-      <span class="pagination-item pagination-current">{{ page_num }}</span>
-    {% elsif page_num == 1 %}
-      <a href="{{ base_url | relative_url }}" class="pagination-item">{{ page_num }}</a>
+    {% comment %} Previous Page Link {% endcomment %}
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        <a href="{{ base_path | relative_url }}" class="pagination-link pagination-prev" rel="prev">
+          <span class="pagination-icon">&larr;</span>
+          <span class="pagination-text">Previous</span>
+        </a>
+      {% else %}
+        <a href="{{ base_path | append: '/page/' | append: paginator.previous_page | relative_url }}" class="pagination-link pagination-prev" rel="prev">
+          <span class="pagination-icon">&larr;</span>
+          <span class="pagination-text">Previous</span>
+        </a>
+      {% endif %}
     {% else %}
-      <a href="{{ base_url | append: 'page' | append: page_num | append: '/' | relative_url }}" class="pagination-item">{{ page_num }}</a>
+      <span class="pagination-link pagination-prev disabled">
+        <span class="pagination-icon">&larr;</span>
+        <span class="pagination-text">Previous</span>
+      </span>
     {% endif %}
-  {% endfor %}
 
-  {% comment %} Show last page if not in range {% endcomment %}
-  {% if end_page < total_pages %}
-    {% if end_page < total_pages | minus: 1 %}
-      <span class="pagination-item pagination-ellipsis">...</span>
+    {% comment %} Page Numbers {% endcomment %}
+    <div class="pagination-numbers">
+      {% comment %} First page {% endcomment %}
+      {% if paginator.page == 1 %}
+        <span class="pagination-number current">1</span>
+      {% else %}
+        <a href="{{ base_path | relative_url }}" class="pagination-number">1</a>
+      {% endif %}
+
+      {% comment %} Show ellipsis if needed {% endcomment %}
+      {% if paginator.page > 4 %}
+        <span class="pagination-ellipsis">&hellip;</span>
+      {% endif %}
+
+      {% comment %} Show pages around current page {% endcomment %}
+      {% assign start_page = paginator.page | minus: 2 %}
+      {% assign end_page = paginator.page | plus: 2 %}
+      
+      {% if start_page < 2 %}
+        {% assign start_page = 2 %}
+      {% endif %}
+      
+      {% if end_page > paginator.total_pages %}
+        {% assign end_page = paginator.total_pages %}
+      {% endif %}
+
+      {% for page_num in (start_page..end_page) %}
+        {% if page_num == paginator.page %}
+          <span class="pagination-number current">{{ page_num }}</span>
+        {% elsif page_num == 1 %}
+          {% comment %} Skip page 1 as it's already handled {% endcomment %}
+        {% else %}
+          <a href="{{ base_path | append: '/page/' | append: page_num | relative_url }}" class="pagination-number">{{ page_num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Show ellipsis if needed {% endcomment %}
+      {% if paginator.page < paginator.total_pages | minus: 3 %}
+        <span class="pagination-ellipsis">&hellip;</span>
+      {% endif %}
+
+      {% comment %} Last page {% endcomment %}
+      {% if paginator.total_pages > 1 %}
+        {% if paginator.page == paginator.total_pages %}
+          <span class="pagination-number current">{{ paginator.total_pages }}</span>
+        {% else %}
+          <a href="{{ base_path | append: '/page/' | append: paginator.total_pages | relative_url }}" class="pagination-number">{{ paginator.total_pages }}</a>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% comment %} Next Page Link {% endcomment %}
+    {% if paginator.next_page %}
+      <a href="{{ base_path | append: '/page/' | append: paginator.next_page | relative_url }}" class="pagination-link pagination-next" rel="next">
+        <span class="pagination-text">Next</span>
+        <span class="pagination-icon">&rarr;</span>
+      </a>
+    {% else %}
+      <span class="pagination-link pagination-next disabled">
+        <span class="pagination-text">Next</span>
+        <span class="pagination-icon">&rarr;</span>
+      </span>
     {% endif %}
-    <a href="{{ base_url | append: 'page' | append: total_pages | append: '/' | relative_url }}" class="pagination-item">{{ total_pages }}</a>
-  {% endif %}
 
-  {% comment %} Next page link {% endcomment %}
-  {% if current_page < total_pages %}
-    {% assign next_page = current_page | plus: 1 %}
-    <a href="{{ base_url | append: 'page' | append: next_page | append: '/' | relative_url }}" class="pagination-item">Next &raquo;</a>
-  {% else %}
-    <span class="pagination-item pagination-disabled">Next &raquo;</span>
-  {% endif %}
-</div>
+  </div>
+
+  {% comment %} Page info {% endcomment %}
+  <div class="pagination-info">
+    <span class="pagination-info-text">
+      Page {{ paginator.page }} of {{ paginator.total_pages }}
+      {% if paginator.total_posts > 0 %}
+        ({{ paginator.total_posts }} total posts)
+      {% endif %}
+    </span>
+  </div>
+</nav>
+
+<style>
+.pagination {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.pagination-link,
+.pagination-number {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  color: #374151;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  min-width: 2.5rem;
+  justify-content: center;
+}
+
+.pagination-link:hover,
+.pagination-number:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #111827;
+}
+
+.pagination-number.current {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.pagination-link.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pagination-ellipsis {
+  padding: 0.5rem 0.25rem;
+  color: #6b7280;
+}
+
+.pagination-icon {
+  font-size: 0.875rem;
+}
+
+.pagination-text {
+  margin: 0 0.25rem;
+}
+
+.pagination-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.pagination-info-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+@media (max-width: 640px) {
+  .pagination-wrapper {
+    gap: 0.25rem;
+  }
+  
+  .pagination-link,
+  .pagination-number {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .pagination-text {
+    display: none;
+  }
+}
+</style>
 {% endif %}
