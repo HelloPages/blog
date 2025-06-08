@@ -5,7 +5,10 @@ permalink: /guestbook/
 ---
 
 <p>Leave a comment below to sign my guestbook!</p>
-
+<p class="guestbook-description">
+    Welcome to my guestbook! Feel free to leave a message, share your thoughts, ask questions, or just say hello. 
+    I'd love to hear from you and connect with fellow readers and thinkers.
+  </p>
 <script src="https://utteranc.es/client.js"
         repo="HelloPages/guestbook"
         issue-term="pathname"
@@ -15,4 +18,28 @@ permalink: /guestbook/
         async>
 </script>
 
-<p class="guestbook-note">Comments are powered by <a href="https://utteranc.es" target="_blank" rel="noopener">utterances</a>, which uses GitHub issues to store comments.</p>
+<p class="guestbook-note">Comments are powered by 
+        <a href="https://utteranc.es" target="_blank" rel="noopener">utterances</a>,
+        which uses GitHub issues to store comments.</p>
+
+<div class="guestbook-footer">
+  <p class="guestbook-note">
+    <strong>Note:</strong> Comments are powered by 
+    <a href="https://utteranc.es" target="_blank" rel="noopener">utterances</a>, 
+    which uses GitHub issues to store and display comments. This ensures your data 
+    stays with you and provides a spam-free commenting experience.
+  </p>
+  
+  <div class="guestbook-setup">
+    <details>
+      <summary>Setup Instructions for Site Owner</summary>
+      <ol>
+        <li>Replace <code>YOUR_GITHUB_USERNAME/YOUR_REPO_NAME</code> with your actual GitHub repository</li>
+        <li>Make sure your repository is public</li>
+        <li>Install the <a href="https://github.com/apps/utterances" target="_blank" rel="noopener">Utterances app</a> on your repository</li>
+        <li>Enable Issues in your repository settings</li>
+        <li>The <code>guestbook</code> label will be automatically created when the first comment is posted</li>
+      </ol>
+    </details>
+  </div>
+</div>
