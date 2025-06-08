@@ -1,0 +1,25 @@
+---
+layout: page
+title: Archive
+permalink: /archive/
+---
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+<div class="archive">
+  {% for year in posts_by_year %}
+    <section class="archive-year">
+      <h2 id="{{ year.name }}">{{ year.name }}</h2>
+      <ul class="post-list">
+        {% for post in year.items %}
+        <li class="post-item">
+          <a href="{{ post.url | relative_url }}" class="post-link">
+            <span class="post-title">{{ post.title }}</span>
+            <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</div>

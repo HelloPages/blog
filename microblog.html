@@ -1,0 +1,16 @@
+---
+layout: default
+title: Microblog
+permalink: /microblog/
+pagination:
+  enabled: true
+  collection: posts
+  category: microblog
+  per_page: 20
+---
+
+<h1 class="page-title">{{ page.title }}</h1>
+
+{% assign microblogs = site.posts | where_exp: "post", "post.categories contains 'microblog'" %}
+{% include post-list-title-only.html posts=paginator.posts %}
+{% include pagination.html %}
