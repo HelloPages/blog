@@ -17,8 +17,9 @@
   <header class="site-header">
     <div class="container">
       <a href="{{ '/' | relative_url }}" class="site-logo">🔥</a>
+         <!--  Nav  -->
       <nav class="site-nav">
-        <a href="{{ '/home' | relative_url }}" {% if page.url contains '/home' %}class="active"{% endif %}>Home</a>
+<!--    <a href="{{ '/home' | relative_url }}" {% if page.url contains '/home' %}class="active"{% endif %}>Home</a>  -->
         <a href="{{ '/notes' | relative_url }}" {% if page.url contains '/notes' %}class="active"{% endif %}>Notes</a>
         <a href="{{ '/posts' | relative_url }}" {% if page.url contains '/posts' %}class="active"{% endif %}>Posts</a>
         <a href="{{ '/microblog' | relative_url }}" {% if page.url contains '/microblog' %}class="active"{% endif %}>Microblog</a>
