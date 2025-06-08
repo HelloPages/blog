@@ -22,13 +22,6 @@ pagination:
       {% include post-list-title-only.html posts=recent_posts %}
       <a href="{{ '/posts' | relative_url }}" class="view-all">View all posts →</a>
     </section>
-    
-    <section class="recent-notes">
-      <h2>Recent Notes</h2>
-      {% assign recent_notes = site.posts | where_exp: "post", "post.categories contains 'notes'" | limit: 5 %}
-      {% include note-list.html notes=recent_notes %}
-      <a href="{{ '/notes' | relative_url }}" class="view-all">View all notes →</a>
-    </section>
   </div>
 
 {% assign notes = site.posts | where_exp: "post", "post.categories contains 'notes'" %}
