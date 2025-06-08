@@ -1,7 +1,7 @@
 # Site settings
 title: HB ☺ 
 description: Notes，Posts，Microblog，HbW.Me 
-baseurl: "/postsing-vf" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://hellopages.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
