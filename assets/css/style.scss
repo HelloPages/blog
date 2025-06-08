@@ -337,7 +337,7 @@ a {
   }
 }
 
-@for $i from 1 through 8 {
+@for $i from 1 through 30 {
   .tag-#{$i} {
     color: white;
     background-color: var(--color-tag-#{$i});
