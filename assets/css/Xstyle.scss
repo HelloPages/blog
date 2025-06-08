@@ -1,7 +1,7 @@
 ---
 ---
 
-// Variables
+// Variables color-tag
 :root {
   --color-background: #ffffff;
   --color-text: #333333;
@@ -15,8 +15,30 @@
   --color-tag-4: #039be5;
   --color-tag-5: #00897b;
   --color-tag-6: #7cb342;
-  --color-tag-7: #fdd835;
-  --color-tag-8: #fb8c00;
+  --color-tag-7: #ff00ff;
+  --color-tag-8: #87cefa;
+  --color-tag-9: #20b2aa;
+  --color-tag-10: #fffff0;
+  --color-tag-11: #00008b;
+  --color-tag-12: #9c27b0;
+  --color-tag-13: #2196f3;
+  --color-tag-14: #00bcd4;
+  --color-tag-15: #009688;
+  --color-tag-16: #8bc34a;
+  --color-tag-17: #ffc107;
+  --color-tag-18: #ff9800;
+  --color-tag-19: #ffc107;
+  --color-tag-20: #ff9800;
+  --color-tag-21: #f44336;
+  --color-tag-22: #673ab7;
+  --color-tag-23: #1976d2;
+  --color-tag-24: #00acc1;
+  --color-tag-25: #00897b;
+  --color-tag-26: #689f38;
+  --color-tag-27: #ffeb3b;
+  --color-tag-28: #f57c00;
+  --color-tag-29: #ffeb3b;
+  --color-tag-30: #f57c00;
   
   /* ========================================
      页面主题颜色配置 - 方便后期修改
@@ -529,7 +551,7 @@ a {
   }
 }
 
-@for $i from 1 through 8 {
+@for $i from 1 through 30 {
   .tag-#{$i} {
     color: white;
     background-color: var(--color-tag-#{$i});
