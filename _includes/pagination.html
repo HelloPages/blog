@@ -61,17 +61,17 @@
         {% assign start_page = 2 %}
       {% endif %}
       
-      {% if end_page > paginator.total_pages %}
-        {% assign end_page = paginator.total_pages %}
+      {% if end_page >= paginator.total_pages %}
+        {% assign end_page = paginator.total_pages | minus: 1 %}
       {% endif %}
 
       {% for page_num in (start_page..end_page) %}
-        {% if page_num == paginator.page %}
-          <span class="pagination-number current">{{ page_num }}</span>
-        {% elsif page_num == 1 %}
-          {% comment %} Skip page 1 as it's already handled {% endcomment %}
-        {% else %}
-          <a href="{{ base_path | append: '/page/' | append: page_num | relative_url }}" class="pagination-number">{{ page_num }}</a>
+        {% if page_num > 1 and page_num < paginator.total_pages %}
+          {% if page_num == paginator.page %}
+            <span class="pagination-number current">{{ page_num }}</span>
+          {% else %}
+            <a href="{{ base_path | append: '/page/' | append: page_num | relative_url }}" class="pagination-number">{{ page_num }}</a>
+          {% endif %}
         {% endif %}
       {% endfor %}
 
@@ -80,7 +80,7 @@
         <span class="pagination-ellipsis">&hellip;</span>
       {% endif %}
 
-      {% comment %} Last page {% endcomment %}
+      {% comment %} Last page (only show if total pages > 1 and not already shown) {% endcomment %}
       {% if paginator.total_pages > 1 %}
         {% if paginator.page == paginator.total_pages %}
           <span class="pagination-number current">{{ paginator.total_pages }}</span>
