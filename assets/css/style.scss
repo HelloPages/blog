@@ -11,37 +11,39 @@
   --color-border: #eeeeee;           // 边框颜色
   --color-link: #0066cc;             // 链接颜色
   --color-link-hover: #004499;       // 链接悬停颜色
-  // 标签颜色（共30种）
-  --color-tag-1: #e53935;            // 标签1颜色
-  --color-tag-2: #8e24aa;            // 标签2颜色
-  --color-tag-3: #3949ab;
-  --color-tag-4: #039be5;
-  --color-tag-5: #00897b;
-  --color-tag-6: #7cb342;
-  --color-tag-7: #ff00ff;
-  --color-tag-8: #87cefa;
-  --color-tag-9: #20b2aa;
-  --color-tag-10: #fffff0;
-  --color-tag-11: #00008b;
-  --color-tag-12: #9c27b0;
-  --color-tag-13: #2196f3;
-  --color-tag-14: #00bcd4;
-  --color-tag-15: #009688;
-  --color-tag-16: #8bc34a;
-  --color-tag-17: #ffc107;
-  --color-tag-18: #ff9800;
-  --color-tag-19: #ffc107;
-  --color-tag-20: #ff9800;
-  --color-tag-21: #f44336;
-  --color-tag-22: #673ab7;
-  --color-tag-23: #1976d2;
-  --color-tag-24: #00acc1;
-  --color-tag-25: #00897b;
-  --color-tag-26: #689f38;
-  --color-tag-27: #ffeb3b;
-  --color-tag-28: #f57c00;
-  --color-tag-29: #ffeb3b;
-  --color-tag-30: #f57c00;
+  /* ========================================
+     标签颜色变量 - 30种不同颜色的标签
+     ======================================== */
+  --color-tag-1: #e53935;         /* 标签色1 - 红色 */
+  --color-tag-2: #8e24aa;         /* 标签色2 - 紫色 */
+  --color-tag-3: #3949ab;         /* 标签色3 - 靛蓝 */
+  --color-tag-4: #039be5;         /* 标签色4 - 浅蓝 */
+  --color-tag-5: #00897b;         /* 标签色5 - 青绿 */
+  --color-tag-6: #7cb342;         /* 标签色6 - 浅绿 */
+  --color-tag-7: #ff00ff;         /* 标签色7 - 洋红 */
+  --color-tag-8: #87cefa;         /* 标签色8 - 天蓝 */
+  --color-tag-9: #20b2aa;         /* 标签色9 - 浅海绿 */
+  --color-tag-10: #fffff0;        /* 标签色10 - 象牙白 */
+  --color-tag-11: #00008b;        /* 标签色11 - 深蓝 */
+  --color-tag-12: #9c27b0;        /* 标签色12 - 紫色 */
+  --color-tag-13: #2196f3;        /* 标签色13 - 蓝色 */
+  --color-tag-14: #00bcd4;        /* 标签色14 - 青色 */
+  --color-tag-15: #009688;        /* 标签色15 - 蓝绿 */
+  --color-tag-16: #8bc34a;        /* 标签色16 - 浅绿 */
+  --color-tag-17: #ffc107;        /* 标签色17 - 琥珀色 */
+  --color-tag-18: #ff9800;        /* 标签色18 - 橙色 */
+  --color-tag-19: #ffc107;        /* 标签色19 - 琥珀色 */
+  --color-tag-20: #ff9800;        /* 标签色20 - 橙色 */
+  --color-tag-21: #f44336;        /* 标签色21 - 红色 */
+  --color-tag-22: #673ab7;        /* 标签色22 - 深紫 */
+  --color-tag-23: #1976d2;        /* 标签色23 - 蓝色 */
+  --color-tag-24: #00acc1;        /* 标签色24 - 青色 */
+  --color-tag-25: #00897b;        /* 标签色25 - 蓝绿 */
+  --color-tag-26: #689f38;        /* 标签色26 - 浅绿 */
+  --color-tag-27: #ffeb3b;        /* 标签色27 - 黄色 */
+  --color-tag-28: #f57c00;        /* 标签色28 - 深橙 */
+  --color-tag-29: #ffeb3b;        /* 标签色29 - 黄色 */
+  --color-tag-30: #f57c00;        /* 标签色30 - 深橙 */
 }
 
 // 暗色模式下的颜色变量覆盖
