@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+<div class="home-content">
+ 
 * This is the about page. You can edit this page to add information about yourself or your site.
 
 ## About Me
@@ -46,3 +48,4 @@ WeChat;DomainsPro
 WorkGropro#Gmail.Com
 
  <hr style="border: 1px dashed #8d87fa; border-radius: 5px; height: 0;" />
+  </div>
