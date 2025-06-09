@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "无奈的我一天"
+title: "无奈的一天"
 date: 2025-06-09
 categories: microblog
 tags: [无奈]
