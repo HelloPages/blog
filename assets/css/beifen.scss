@@ -1,473 +1,523 @@
 ---
 ---
 
-// Variables // notes posts MB bug  
-/* 2style.scss */
+// Variables 
+// 全局CSS变量定义（使用CSS自定义属性）
 :root {
-  --color-background: #ffffff;
-  --color-text: #333333;
-  --color-text-light: #666666;
-  --color-border: #eeeeee;
-  --color-link: #0066cc;
-  --color-link-hover: #004499;
-  --color-tag-1: #e53935;
-  --color-tag-2: #8e24aa;
-  --color-tag-3: #3949ab;
-  --color-tag-4: #039be5;
-  --color-tag-5: #00897b;
-  --color-tag-6: #7cb342;
-  --color-tag-7: #ff00ff;
-  --color-tag-8: #87cefa;
-  --color-tag-9: #20b2aa;
-  --color-tag-10: #fffff0;
-  --color-tag-11: #00008b;
-  --color-tag-12: #9c27b0;
-  --color-tag-13: #2196f3;
-  --color-tag-14: #00bcd4;
-  --color-tag-15: #009688;
-  --color-tag-16: #8bc34a;
-  --color-tag-17: #ffc107;
-  --color-tag-18: #ff9800;
-  --color-tag-19: #ffc107;
-  --color-tag-20: #ff9800;
-  --color-tag-21: #f44336;
-  --color-tag-22: #673ab7;
-  --color-tag-23: #1976d2;
-  --color-tag-24: #00acc1;
-  --color-tag-25: #00897b;
-  --color-tag-26: #689f38;
-  --color-tag-27: #ffeb3b;
-  --color-tag-28: #f57c00;
-  --color-tag-29: #ffeb3b;
-  --color-tag-30: #f57c00;
+  // 浅色模式下的颜色变量
+  --color-background: #ffffff;       // 背景色
+  --color-text: #333333;             // 主要文本颜色
+  --color-text-light: #666666;       // 次要文本颜色
+  --color-border: #eeeeee;           // 边框颜色
+  --color-link: #0066cc;             // 链接颜色
+  --color-link-hover: #004499;       // 链接悬停颜色
+  /* ========================================
+     标签颜色变量 - 30种不同颜色的标签
+     ======================================== */
+  --color-tag-1: #e53935;         /* 标签色1 - 红色 */
+  --color-tag-2: #8e24aa;         /* 标签色2 - 紫色 */
+  --color-tag-3: #3949ab;         /* 标签色3 - 靛蓝 */
+  --color-tag-4: #039be5;         /* 标签色4 - 浅蓝 */
+  --color-tag-5: #00897b;         /* 标签色5 - 青绿 */
+  --color-tag-6: #7cb342;         /* 标签色6 - 浅绿 */
+  --color-tag-7: #ff00ff;         /* 标签色7 - 洋红 */
+  --color-tag-8: #87cefa;         /* 标签色8 - 天蓝 */
+  --color-tag-9: #20b2aa;         /* 标签色9 - 浅海绿 */
+  --color-tag-10: #df0000;        /* 标签色10 - 红色 */
+  --color-tag-11: #00008b;        /* 标签色11 - 深蓝 */
+  --color-tag-12: #9c27b0;        /* 标签色12 - 紫色 */
+  --color-tag-13: #2196f3;        /* 标签色13 - 蓝色 */
+  --color-tag-14: #00bcd4;        /* 标签色14 - 青色 */
+  --color-tag-15: #009688;        /* 标签色15 - 蓝绿 */
+  --color-tag-16: #8bc34a;        /* 标签色16 - 浅绿 */
+  --color-tag-17: #ffc107;        /* 标签色17 - 琥珀色 */
+  --color-tag-18: #ff9800;        /* 标签色18 - 橙色 */
+  --color-tag-19: #ffc107;        /* 标签色19 - 琥珀色 */
+  --color-tag-20: #ff9800;        /* 标签色20 - 橙色 */
+  --color-tag-21: #f44336;        /* 标签色21 - 红色 */
+  --color-tag-22: #673ab7;        /* 标签色22 - 深紫 */
+  --color-tag-23: #1976d2;        /* 标签色23 - 蓝色 */
+  --color-tag-24: #00acc1;        /* 标签色24 - 青色 */
+  --color-tag-25: #00897b;        /* 标签色25 - 蓝绿 */
+  --color-tag-26: #689f38;        /* 标签色26 - 浅绿 */
+  --color-tag-27: #ffeb3b;        /* 标签色27 - 黄色 */
+  --color-tag-28: #f57c00;        /* 标签色28 - 深橙 */
+  --color-tag-29: #ffeb3b;        /* 标签色29 - 黄色 */
+  --color-tag-30: #f57c00;        /* 标签色30 - 深橙 */
 }
 
+// 暗色模式下的颜色变量覆盖
 .dark-mode {
-  --color-background: #121212;
-  --color-text: #e0e0e0;
-  --color-text-light: #a0a0a0;
-  --color-border: #333333;
-  --color-link: #4dabf7;
-  --color-link-hover: #74c0fc;
+  --color-background: #121212;       // 暗色背景
+  --color-text: #e0e0e0;             // 暗色文本
+  --color-text-light: #a0a0a0;       // 暗色次要文本
+  --color-border: #333333;           // 暗色边框
+  --color-link: #4dabf7;             // 暗色链接
+  --color-link-hover: #74c0fc;       // 暗色链接悬停
 }
 
-// Base styles
+// 基础样式重置
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;            // 使用border-box盒模型
+  margin: 0;                         // 重置外边距
+  padding: 0;                        // 重置内边距
 }
 
+// 全局body样式
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  transition: background-color 0.3s, color 0.3s;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; // 系统字体栈
+  line-height: 1.6;                  // 行高
+  color: var(--color-text);          // 文本颜色（使用CSS变量）
+  background-color: var(--color-background); // 背景色（使用CSS变量）
+  transition: background-color 0.3s, color 0.3s; // 平滑过渡效果
 }
 
+// 容器样式（居中布局）
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1200px;                 // 最大宽度
+  margin: 0 auto;                    // 水平居中
+  padding: 0 20px;                   // 左右内边距
 }
 
+// 链接样式
 a {
-  color: var(--color-link);
-  text-decoration: none;
-  transition: color 0.2s;
+  color: var(--color-link);          // 链接颜色
+  text-decoration: none;             // 去掉下划线
+  transition: color 0.2s;            // 颜色过渡效果
   
+  // 链接悬停状态
   &:hover {
-    color: var(--color-link-hover);
+    color: var(--color-link-hover);  // 悬停时改变颜色
   }
 }
 
-// Header
+// 页面头部样式
 .site-header {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--color-border);
-  margin-bottom: 40px;
+  padding: 20px 0;                   // 上下内边距
+  border-bottom: 1px solid var(--color-border); // 底部边框
+  margin-bottom: 40px;               // 下方外边距
   
+  // 头部容器布局
   .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;                   // 弹性布局
+    justify-content: space-between;  // 子元素两端对齐
+    align-items: center;             // 子元素垂直居中
   }
 }
 
+// 网站logo样式
 .site-logo {
-  font-size: 24px;
-  font-weight: bold;
-  text-decoration: none;
+  font-size: 24px;                   // 字体大小
+  font-weight: bold;                 // 加粗
+  text-decoration: none;             // 去掉下划线
 }
 
+// 导航菜单样式
 .site-nav {
-  display: flex;
-  gap: 20px;
-  align-items: center;
+  display: flex;                     // 弹性布局
+  gap: 20px;                         // 子元素间距
+  align-items: center;               // 子元素垂直居中
   
+  // 导航链接样式
   a {
-    color: var(--color-text);
-    font-weight: 500;
-    
-    &:hover, &.active {
-      color: var(--color-link);
+    color: var(--color-text);        // 文本颜色
+    font-weight: 500;                // 中等加粗
+    &:hover, &.active {              // 悬停或激活状态
+      color: var(--color-link);      // 改变颜色
     }
   }
   
+  // 导航按钮样式
   button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
+    background: none;                // 无背景
+    border: none;                    // 无边框
+    cursor: pointer;                 // 鼠标指针变为手型
+    color: var(--color-text);        // 文本颜色
+    display: flex;                   // 弹性布局
+    align-items: center;             // 垂直居中
+    justify-content: center;         // 水平居中
+    padding: 5px;                    // 内边距
     
+    // 按钮悬停状态
     &:hover {
-      color: var(--color-link);
+      color: var(--color-link);      // 改变颜色
     }
   }
 }
 
-// Content
+// 页面内容区域样式
 .site-content {
-  min-height: calc(100vh - 180px);
-  padding-bottom: 40px;
+  min-height: calc(100vh - 180px);   // 最小高度（视口高度减去固定高度）
+  padding-bottom: 40px;              // 底部内边距
 }
 
+// 页面标题样式
 .page-title {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+  font-size: 2.5rem;                 // 字体大小
+  margin-bottom: 30px;               // 下方外边距
 }
 
-// Post lists
+// 文章列表样式
 .post-list {
-  list-style: none;
+  list-style: none;                  // 去掉列表标记
   
+  // 仅显示标题的文章列表样式
   &.title-only {
     .post-item {
-      border-bottom: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border); // 底部边框
       
+      // 最后一个文章项去掉底部边框
       &:last-child {
         border-bottom: none;
       }
     }
     
+    // 文章链接样式
     .post-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
-      color: var(--color-text);
+      display: flex;                 // 弹性布局
+      justify-content: space-between; // 子元素两端对齐
+      align-items: center;           // 子元素垂直居中
+      padding: 15px 0;               // 上下内边距
+      color: var(--color-text);      // 文本颜色
       
+      // 链接悬停状态
       &:hover {
-        .post-title {
-          color: var(--color-link);
+        .post-title {                // 文章标题
+          color: var(--color-link);  // 改变颜色
         }
       }
     }
     
+    // 文章日期样式
     .post-date {
-      color: var(--color-text-light);
-      font-size: 0.9rem;
+      color: var(--color-text-light); // 次要文本颜色
+      font-size: 0.9rem;             // 字体大小
     }
   }
 }
 
-// Note grid
+// 笔记网格布局
 .note-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  margin-bottom: 30px;
+  display: grid;                     // 网格布局
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // 自动填充列
+  gap: 20px;                         // 列间距
+  margin-bottom: 30px;               // 下方外边距
 }
 
+// 笔记项样式
 .note-item {
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
-  padding: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--color-border); // 边框
+  border-radius: 5px;                // 圆角
+  padding: 20px;                     // 内边距
+  transition: transform 0.2s, box-shadow 0.2s; // 平滑过渡效果
   
+  // 悬停状态
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);     // 向上移动
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); // 阴影效果
   }
   
+  // 笔记标题样式
   .note-title {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    margin-bottom: 10px;             // 下方外边距
+    font-size: 1.2rem;               // 字体大小
   }
   
+  // 笔记摘要样式
   .note-excerpt {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
+    color: var(--color-text-light);  // 次要文本颜色
+    font-size: 0.95rem;              // 字体大小
   }
 }
 
-// Search
+// 搜索框容器样式
 .search-container {
-  margin-bottom: 30px;
+  margin-bottom: 30px;               // 下方外边距
   
+  // 搜索输入框样式
   input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    width: 100%;                     // 宽度100%
+    padding: 10px 15px;              // 内边距
+    border: 1px solid var(--color-border); // 边框
+    border-radius: 5px;              // 圆角
+    font-size: 1rem;                 // 字体大小
+    background-color: var(--color-background); // 背景色
+    color: var(--color-text);        // 文本颜色
     
+    // 聚焦状态
     &:focus {
-      outline: none;
-      border-color: var(--color-link);
+      outline: none;                 // 去掉默认轮廓
+      border-color: var(--color-link); // 改变边框颜色
     }
   }
 }
 
-// Tags
+// 标签云样式
 .tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 40px;
+  display: flex;                     // 弹性布局
+  flex-wrap: wrap;                   // 允许换行
+  gap: 10px;                         // 子元素间距
+  margin-bottom: 40px;               // 下方外边距
 }
 
+// 单个标签样式
 .tag {
-  display: inline-block;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 0.9rem;
-  transition: transform 0.2s;
+  display: inline-block;             // 行内块元素
+  padding: 5px 10px;                 // 内边距
+  border-radius: 15px;               // 圆角
+  font-size: 0.9rem;                 // 字体大小
+  transition: transform 0.2s;        // 平滑过渡效果
   
+  // 悬停状态
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.05);          // 放大效果
   }
   
+  // 标签计数样式
   .tag-count {
-    font-size: 0.8rem;
-    opacity: 0.8;
+    font-size: 0.8rem;               // 字体大小
+    opacity: 0.8;                    // 透明度
   }
 }
 
+// 生成30个不同颜色的标签类（使用SCSS的@for循环）
 @for $i from 1 through 30 {
-  .tag-#{$i} {
-    color: white;
-    background-color: var(--color-tag-#{$i});
+  .tag-#{$i} {                       // 动态生成类名（如.tag-1, .tag-2等）
+    color: white;                    // 文本颜色
+    background-color: var(--color-tag-#{$i}); // 背景色（使用CSS变量）
   }
 }
 
+// 标签部分样式
 .tag-section {
-  margin-bottom: 40px;
+  margin-bottom: 40px;               // 下方外边距
   
+  // 标签名样式
   .tag-name {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--color-border);
+    font-size: 1.5rem;               // 字体大小
+    margin-bottom: 15px;             // 下方外边距
+    padding-bottom: 5px;             // 底部内边距
+    border-bottom: 2px solid var(--color-border); // 底部边框
   }
 }
 
-// Pagination
+// 分页样式
 .pagination {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 40px;
+  display: flex;                     // 弹性布局
+  justify-content: center;           // 水平居中
+  gap: 10px;                         // 子元素间距
+  margin-top: 40px;                  // 上方外边距
   
+  // 分页项样式
   .pagination-item {
-    padding: 8px 12px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    padding: 8px 12px;               // 内边距
+    border: 1px solid var(--color-border); // 边框
+    border-radius: 4px;              // 圆角
     
+    // 当前分页项样式
     &.pagination-current {
-      background-color: var(--color-link);
-      color: white;
-      border-color: var(--color-link);
+      background-color: var(--color-link); // 背景色
+      color: white;                  // 文本颜色
+      border-color: var(--color-link); // 边框颜色
     }
     
+    // 禁用分页项样式
     &.pagination-disabled {
-      color: var(--color-text-light);
-      cursor: not-allowed;
+      color: var(--color-text-light); // 次要文本颜色
+      cursor: not-allowed;           // 鼠标指针变为禁止状态
     }
   }
 }
 
-// Post content
+// 文章内容样式
 .post {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 800px;                  // 最大宽度
+  margin: 0 auto;                    // 水平居中
   
+  // 文章头部样式
   .post-header {
-    margin-bottom: 30px;
+    margin-bottom: 30px;             // 下方外边距
     
+    // 文章标题样式
     .post-title {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 2.5rem;             // 字体大小
+      margin-bottom: 10px;           // 下方外边距
     }
     
+    // 文章日期样式
     .post-date {
-      display: block;
-      color: var(--color-text-light);
-      margin-bottom: 15px;
+      display: block;                // 块级元素
+      color: var(--color-text-light); // 次要文本颜色
+      margin-bottom: 15px;           // 下方外边距
     }
     
+    // 文章标签容器样式
     .post-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      display: flex;                 // 弹性布局
+      flex-wrap: wrap;               // 允许换行
+      gap: 8px;                      // 子元素间距
     }
   }
   
+  // 文章内容区域样式
   .post-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.1rem;               // 字体大小
+    line-height: 1.8;                // 行高
     
+    // 标题元素样式（h1-h6）
     h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
+      margin-top: 1.5em;             // 上方外边距
+      margin-bottom: 0.5em;          // 下方外边距
     }
     
+    // 段落元素样式
     p, ul, ol {
-      margin-bottom: 1.5em;
+      margin-bottom: 1.5em;          // 下方外边距
     }
     
+    // 列表元素样式
     ul, ol {
-      padding-left: 1.5em;
+      padding-left: 1.5em;           // 左侧内边距
     }
     
+    // 引用块样式
     blockquote {
-      border-left: 4px solid var(--color-border);
-      padding-left: 1em;
-      font-style: italic;
-      color: var(--color-text-light);
+      border-left: 4px solid var(--color-border); // 左侧边框
+      padding-left: 1em;             // 左侧内边距
+      font-style: italic;            // 斜体
+      color: var(--color-text-light); // 次要文本颜色
     }
     
+    // 图片样式
     img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 2em auto;
+      max-width: 100%;               // 最大宽度100%
+      height: auto;                  // 高度自适应
+      display: block;                // 块级元素
+      margin: 2em auto;              // 上下外边距，水平居中
     }
     
+    // 代码块样式
     code {
-      background-color: var(--color-border);
-      padding: 0.2em 0.4em;
-      border-radius: 3px;
-      font-family: monospace;
+      background-color: var(--color-border); // 背景色
+      padding: 0.2em 0.4em;          // 内边距
+      border-radius: 3px;            // 圆角
+      font-family: monospace;        // 等宽字体
     }
     
+    // 预格式化代码块样式
     pre {
-      background-color: var(--color-border);
-      padding: 1em;
-      border-radius: 5px;
-      overflow-x: auto;
-      margin-bottom: 1.5em;
+      background-color: var(--color-border); // 背景色
+      padding: 1em;                  // 内边距
+      border-radius: 5px;            // 圆角
+      overflow-x: auto;              // 水平滚动条（内容溢出时）
+      margin-bottom: 1.5em;          // 下方外边距
       
+      // 预格式化代码块内的代码样式
       code {
-        background-color: transparent;
-        padding: 0;
+        background-color: transparent; // 透明背景
+        padding: 0;                  // 无内边距
       }
     }
   }
 }
 
-// Footer
+// 页面底部样式
 .site-footer {
-  text-align: center;
-  padding: 20px 0;
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-light);
-  font-size: 0.9rem;
+  text-align: center;                // 文本居中对齐
+  padding: 20px 0;                   // 上下内边距
+  border-top: 1px solid var(--color-border); // 顶部边框（使用CSS变量）
+  color: var(--color-text-light);    // 次要文本颜色（使用CSS变量）
+  font-size: 0.9rem;                 // 字体大小（比正文小）
 }
 
-// Collections
+// 收藏集合列表样式
 .collection-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
+  display: grid;                     // 网格布局
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // 自动填充列，最小250px，最大1fr
+  gap: 20px;                         // 列间距
+  margin-top: 30px;                  // 上方外边距
 }
 
+// 单个收藏项样式
 .collection-item {
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
-  padding: 20px;
-  transition: transform 0.2s;
+  border: 1px solid var(--color-border); // 边框（使用CSS变量）
+  border-radius: 5px;                // 圆角
+  padding: 20px;                     // 内边距
+  transition: transform 0.2s;        // 平滑过渡效果
   
+  // 悬停状态
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-3px);     // 向上移动（微妙的悬停效果）
   }
   
+  // 收藏项标题样式
   .collection-title {
-    margin-bottom: 10px;
+    margin-bottom: 10px;             // 下方外边距
   }
   
+  // 收藏项计数样式（如项目数量）
   .collection-count {
-    color: var(--color-text-light);
-    margin-bottom: 15px;
+    color: var(--color-text-light);  // 次要文本颜色（使用CSS变量）
+    margin-bottom: 15px;             // 下方外边距
   }
 }
 
-// Guestbook
+// 留言簿笔记样式
 .guestbook-note {
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: var(--color-text-light);
+  margin-top: 30px;                  // 上方外边距
+  font-size: 0.9rem;                 // 字体大小（比正文小）
+  color: var(--color-text-light);    // 次要文本颜色（使用CSS变量）
 }
 
-// Responsive
-@media (max-width: 768px) {
+// 响应式设计（媒体查询）
+@media (max-width: 768px) {          // 中等屏幕尺寸（平板等）
   .site-nav {
-    gap: 15px;
-    
+    gap: 15px;                       // 导航项间距减小
     a {
-      font-size: 0.9rem;
+      font-size: 0.9rem;             // 导航链接字体大小减小
     }
   }
   
   .page-title {
-    font-size: 2rem;
+    font-size: 2rem;                 // 页面标题字体大小减小
   }
   
   .note-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;      // 笔记网格变为单列布局
   }
   
   .post .post-header .post-title {
-    font-size: 2rem;
+    font-size: 2rem;                 // 文章标题字体大小减小
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) {          // 小屏幕尺寸（手机等）
   .site-header .container {
-    flex-direction: column;
-    gap: 15px;
+    flex-direction: column;          // 头部容器改为垂直布局
+    gap: 15px;                       // 子元素间距
   }
   
   .post-list.title-only .post-link {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
+    flex-direction: column;          // 文章链接改为垂直布局
+    align-items: flex-start;         // 左对齐
+    gap: 5px;                        // 子元素间距
   }
 }
 
-//  Notes, Posts, and Microblog Comparison
-
+// 表格样式（用于Notes, Posts, 和 Microblog的比较）
 table {
-  border-collapse: collapse;
-  width: 100%;
+  border-collapse: collapse;         // 边框合并为单线
+  width: 100%;                       // 宽度100%
 }
 
+// 表头和单元格样式
 th, td {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+  border: 1px solid #dddddd;         // 边框（浅灰色）
+  text-align: left;                  // 左对齐
+  padding: 8px;                      // 内边距
 }
 
+// 表头样式（特殊背景色）
 th {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2;         // 浅灰色背景
 }
-
-
