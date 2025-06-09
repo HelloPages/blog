@@ -1,0 +1,100 @@
+HB-jekyll-theme/
+├── _plugins/
+│   ├── markdownlint           # markdownlint插件
+│   ├── mdformat.rb            # mdformat插件
+│   ├── Jekyll-Paginate        # Jekyll-Paginate插件
+│   ├── Jekyll-Feed            # Jekyll-Feed插件
+│   ├── Jekyll-SEO             # Jekyll-SEO插件
+│   ├── Jekyll-Redirect-From   # Jekyll-Redirect-From插件
+│   ├── Jekyll-Exclude         # Jekyll-Exclude插件
+│   ├── Jekyll Sitemap         # Jekyll Sitemap插件
+│   ├── Jekyll Assets          # Jekyll Assets插件
+│   ├── Polyglot               # Polyglot插件
+│   ├── Jekyll - Mermaid       # Jekyll - Mermaid插件
+│   └── ...                    # 其他插件
+├── _includes/                 # 可复用的 HTML 片段
+│   ├── header.html            # 中文注解 页面头部（导航栏等）
+│   ├── footer.html            # 中文注解 页面底部
+│   ├── sidebar.html           # 中文注解 侧边栏（如果有）
+│   └── comments.html          # 存放评论代码（Utterances 等）
+│   └── ...                    # 其他可复用组件
+├── _layouts/                  # 页面布局模板
+│   ├── default.html           # 中文注解 默认布局（基础模板）
+│   ├── post.html              # 中文注解 文章页面布局
+│   ├── page.html              # 中文注解 普通页面布局
+│   └── ...                    # 中文注解 其他布局（如 home.html）
+├── _posts/                    # 博客文章（用户内容，非主题文件）
+│   ├── notes                  # notes文章示例
+│   │   ├── YYYY-MM-DD-1.md    # 文章示例
+│   │   ├── YYYY-MM-DD-2.md    # 文章示例
+│   │   ├── YYYY-MM-DD-3.md    # 文章示例
+│   │   ├── YYYY-MM-DD-4.md    # 文章示例
+│   │   ├── YYYY-MM-DD-5.md    # 文章示例
+│   │   ├── YYYY-MM-DD-6.md    # 文章示例
+│   │   ├── YYYY-MM-DD-7.md    # 文章示例
+│   │   ├── YYYY-MM-DD-8.md    # 文章示例
+│   │   ├── YYYY-MM-DD-9.md    # 文章示例
+│   │   ├── YYYY-MM-DD-10.md   # 文章示例
+│   │   └── ...                    # 其他文章
+│   ├── posts                  # posts文章示例
+│   │   ├── YYYY-MM-DD-1.md    # 文章示例
+│   │   ├── YYYY-MM-DD-2.md    # 文章示例
+│   │   ├── YYYY-MM-DD-3.md    # 文章示例
+│   │   ├── YYYY-MM-DD-4.md    # 文章示例
+│   │   ├── YYYY-MM-DD-5.md    # 文章示例
+│   │   ├── YYYY-MM-DD-6.md    # 文章示例
+│   │   ├── YYYY-MM-DD-7.md    # 文章示例
+│   │   ├── YYYY-MM-DD-8.md    # 文章示例
+│   │   ├── YYYY-MM-DD-9.md    # 文章示例
+│   │   ├── YYYY-MM-DD-10.md   # 文章示例
+│   │   └── ...                    # 其他文章
+│   ├── microblog               # microblog 文章示例
+│   │   ├── YYYY-MM-DD-1.md    # 文章示例
+│   │   ├── YYYY-MM-DD-2.md    # 文章示例
+│   │   ├── YYYY-MM-DD-3.md    # 文章示例
+│   │   ├── YYYY-MM-DD-4.md    # 文章示例
+│   │   ├── YYYY-MM-DD-5.md    # 文章示例
+│   │   ├── YYYY-MM-DD-6.md    # 文章示例
+│   │   ├── YYYY-MM-DD-7.md    # 文章示例
+│   │   ├── YYYY-MM-DD-8.md    # 文章示例
+│   │   ├── YYYY-MM-DD-9.md    # 文章示例
+│   │   ├── YYYY-MM-DD-10.md   # 文章示例
+│   │   └── ...                    # 其他文章
+├── _sass/                     # Sass 样式文件（主题样式）
+│   ├── _base.scss             # 中文注解 基础样式
+│   ├── _layout.scss           # 中文注解 布局相关样式
+│   ├── _variables.scss        # 中文注解 Sass 变量（颜色、字体等）
+│   └── ...                    # 其他样式文件
+├── _pages/                    # Sass 样式文件（主题样式）
+│   ├── index.md               # index
+│   ├── notes.md               # notes
+│   ├── posts.md               # posts
+│   ├── microblog.md           # microblog
+│   ├── archive.md             # 档案页面 
+│   ├── tags.md                # tags 随机 彩色TAGS
+│   ├── bookmark.md            # bookmark
+│   ├── guestbook.md           # 使用 utterances
+│   ├── bookmark.md            # bookmark
+│   ├── domains.md             # domains 链接
+│   ├── links.md               # links 链接
+│   └── 404.md                 # 404
+├── assets/                    # 静态资源（主题可能包含）
+│   ├── css/                   # 编译后的 CSS 文件
+│   │   └── main.css           # 中文注解
+│   ├── js/                    # 中文注解
+│   │   └── main.js            # 主脚本文件
+│   ├── images/                # 图片资源
+│   └── fonts/                 # 字体文件
+├── _data/                     # 数据文件（如导航菜单数据）
+│   └── navigation.yml         # 导航菜单数据示例
+├── _config-theme.yml          # 带中文注解
+├── _config.yml                # 带中文注解
+└── README.md                  # 主题文档
+
+
+### 要求 黑暗模式 
+
+###  notes，posts，microblog  页面只显示标题 时间靠右 数字时间，带翻页！
+###  config.yml   带中文注解 可以开启插件 关闭 插件...
+###  sass         带中文注解
+### 仿照图片制作主题
