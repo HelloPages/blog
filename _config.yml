@@ -47,6 +47,16 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
   
+# ai bug notes,文章同步 posts，posts同步MB
+  collections:
+  blog:
+    output: true
+    output_dir: blog  # 输出到 _site/blog 目录
+  note:
+    output: true
+    output_dir: note  # 输出到 _site/note 目录
+
+    
 # Plugins
 plugins:
   - jekyll-feed
