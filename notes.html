@@ -20,7 +20,7 @@ pagination:
       <h2>Recent Posts</h2>
       {% assign recent_posts = site.posts | where_exp: "post", "post.categories contains 'posts'" | limit: 5 %}
       {% include post-list-title-only.html posts=recent_posts %}
-      <a href="{{ '/posts/notes' | relative_url }}" class="view-all">View all posts →</a>
+      <a href="{{ '/posts' | relative_url }}" class="view-all">View all posts →</a>
     </section>
   </div>
 
