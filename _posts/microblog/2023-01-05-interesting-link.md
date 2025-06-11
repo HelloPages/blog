@@ -1,5 +1,6 @@
 ---
 layout: post
+type: microblog
 title: "Interesting Article on AI"
 date: 2023-01-05
 categories: microblog
