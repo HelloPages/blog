@@ -1,5 +1,6 @@
 ---
 layout: post
+type: post
 title: "test posts"
 date: 2025-03-03
 categories: posts
