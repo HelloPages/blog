@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About md
-permalink: /aboutmd/
+permalink: /about/
 ---
 
 <div class="home-content">
