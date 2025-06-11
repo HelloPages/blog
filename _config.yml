@@ -10,8 +10,6 @@ permalink: /:categories/:year/:month/:day/:title/
 
 # Collections
 collections:
-  posts:
-    output: true
   notes:
     output: true
   microblog:
