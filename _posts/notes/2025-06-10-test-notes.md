@@ -1,7 +1,7 @@
 ---
 layout: post
 type: note
-title: "Atomicity test notes "
+title: "test-notes"
 date: 2025-06-10
 categories: notes
 tags: [programming,concepts]
