@@ -72,6 +72,8 @@ pagination:
   sort_field: 'date'
   sort_reverse: true
 
+markdown: kramdown  # 确保 Markdown 解析器已设置
+
 # Exclude from processing
 exclude:
   - Gemfile
