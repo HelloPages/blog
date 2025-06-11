@@ -1,5 +1,6 @@
 ---
 layout: post
+type: microblog
 title: "莫名的失落 test microblog"
 date: 2025-06-10
 categories: microblog
