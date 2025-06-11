@@ -10,6 +10,8 @@ permalink: /:categories/:year/:month/:day/:title/
 
 # Collections
 collections:
+  posts:
+    output: true
   notes:
     output: true
   microblog:
@@ -18,17 +20,22 @@ collections:
 # Defaults
 defaults:
   - scope:
-      path: "posts/notes"  # Notes 目录
+      path: ""
+      type: "posts"
     values:
-      type: note           # 标记为 note 类型
+      layout: "post"
   - scope:
-      path: "posts/posts"  # Posts 目录
+      path: ""
+      type: "notes"
     values:
-      type: posts           # 标记为 posts 类型
+      layout: "post"
+      categories: "notes"
   - scope:
-      path: "posts/microblog"  # Microblog 目录
+      path: ""
+      type: "microblog"
     values:
-      type: microblog          # 标记为 microblog 类型
+      layout: "post"
+      categories: "microblog"
 
 # Pagination settings
 pagination:
