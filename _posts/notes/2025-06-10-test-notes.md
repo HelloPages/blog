@@ -1,5 +1,6 @@
 ---
 layout: post
+type: note
 title: "Atomicity test notes "
 date: 2025-06-10
 categories: notes
