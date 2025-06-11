@@ -1,7 +1,7 @@
 ---
 layout: post
 type: note
-title: "Atomicity notes"
+title: "btest-notes"
 date: 2024-11-03
 categories: notes
 tags: [programming, database, concepts]
