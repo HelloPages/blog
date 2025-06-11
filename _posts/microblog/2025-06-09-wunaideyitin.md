@@ -1,5 +1,6 @@
 ---
 layout: post
+type: microblog
 title: "test microblog"
 date: 2025-06-09
 categories: microblog
