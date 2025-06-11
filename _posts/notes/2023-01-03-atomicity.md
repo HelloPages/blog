@@ -1,5 +1,6 @@
 ---
 layout: post
+type: note
 title: "Atomicity"
 date: 2023-01-03
 categories: notes
