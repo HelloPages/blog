@@ -12,6 +12,37 @@ layout: default
       {% endfor %}
     </div>
     {% endif %}
+    <!--  test  -->
+    <!-- 显示 Posts 目录下的文章 -->
+{% for post in site.posts %}
+  {% if post.type == "post" %}
+    <article>
+      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+    </article>
+  {% endif %}
+{% endfor %}
+
+<!-- 显示 Notes 目录下的文章 -->
+{% for note in site.notes %}
+  {% if note.type == "note" %}
+    <article>
+      <h2><a href="{{ note.url }}">{{ note.title }}</a></h2>
+      <p>{{ note.excerpt }}</p>
+    </article>
+  {% endif %}
+{% endfor %}
+
+<!-- 显示 Microblog 目录下的文章 -->
+{% for microblog in site.microblog %}
+  {% if microblog.type == "microblog" %}
+    <article>
+      <h2><a href="{{ microblog.url }}">{{ microblog.title }}</a></h2>
+      <p>{{ microblog.excerpt }}</p>
+    </article>
+  {% endif %}
+{% endfor %}
+ <!--  test  -->
   </header>
 
   <div class="post-content">
