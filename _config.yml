@@ -26,7 +26,7 @@ defaults:
   - scope:
       path: "posts/posts"  # Posts 目录
     values:
-      type: post           # 标记为 post 类型
+      type: posts           # 标记为 posts 类型
   - scope:
       path: "posts/microblog"  # Microblog 目录
     values:
