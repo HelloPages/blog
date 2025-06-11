@@ -1,5 +1,6 @@
 ---
 layout: post
+type: note
 title: "Availability Bias"
 date: 2023-01-02
 categories: notes
