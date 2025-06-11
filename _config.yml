@@ -20,22 +20,17 @@ collections:
 # Defaults
 defaults:
   - scope:
-      path: ""
-      type: "posts"
+      path: "posts/notes"  # Notes 目录
     values:
-      layout: "post"
+      type: note           # 标记为 note 类型
   - scope:
-      path: ""
-      type: "notes"
+      path: "posts/posts"  # Posts 目录
     values:
-      layout: "post"
-      categories: "notes"
+      type: post           # 标记为 post 类型
   - scope:
-      path: ""
-      type: "microblog"
+      path: "posts/microblog"  # Microblog 目录
     values:
-      layout: "post"
-      categories: "microblog"
+      type: microblog          # 标记为 microblog 类型
 
 # Pagination settings
 pagination:
