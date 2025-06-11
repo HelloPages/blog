@@ -1,5 +1,6 @@
 ---
 layout: post
+type: microblog
 title: "Quick Thought on Productivity"
 date: 2023-01-04
 categories: microblog
